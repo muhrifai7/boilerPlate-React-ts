@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, StyleSheet, Animated, TouchableOpacity} from 'react-native';
+import {Text, Animated, TouchableOpacity} from 'react-native';
 
-import {colors, sizes} from '../../../theme/index';
+import styles from './styles';
 
 type PropsButton = {
   title: String;
@@ -49,7 +49,7 @@ const Button: React.FC<PropsButton> = ({type, style, title, onPress}) => {
 
   return (
     <TouchableOpacity
-      activeOpacity={0.95}
+      activeOpacity={0.99}
       onPressIn={inAnimate}
       onPressOut={outAnimate}
       onPress={onPress}>
@@ -61,39 +61,3 @@ const Button: React.FC<PropsButton> = ({type, style, title, onPress}) => {
 };
 
 export default Button;
-
-const styles = StyleSheet.create({
-  primary: {
-    backgroundColor: colors.primary,
-    paddingVertical: 15,
-    marginHorizontal: 20,
-    borderRadius: sizes.radiusMedium,
-    alignItems: 'center',
-  },
-  dark: {
-    backgroundColor: colors.dark,
-    paddingVertical: 20,
-    marginHorizontal: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-  },
-  light: {
-    backgroundColor: colors.light,
-    paddingVertical: 20,
-    marginHorizontal: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-  },
-  textLight: {
-    color: colors.black2,
-    fontWeight: 'bold',
-  },
-  textDark: {
-    color: colors.white,
-    fontWeight: 'bold',
-  },
-  textPrimary: {
-    color: colors.white,
-    fontWeight: 'bold',
-  },
-});

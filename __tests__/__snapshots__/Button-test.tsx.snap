@@ -39,9 +39,11 @@ Object {
         style={
           Array [
             Object {
-              "color": "white",
+              "color": "#FFF",
               "fontWeight": "bold",
             },
+            false,
+            false,
           ]
         }
       >
@@ -85,8 +87,10 @@ Object {
       <Text
         style={
           Array [
+            false,
+            false,
             Object {
-              "color": "white",
+              "color": "#4B4F71",
               "fontWeight": "bold",
             },
           ]
@@ -118,9 +122,9 @@ Object {
         Object {
           "alignItems": "center",
           "backgroundColor": "#003F6D",
-          "borderRadius": 15,
+          "borderRadius": 6,
           "marginHorizontal": 20,
-          "paddingVertical": 20,
+          "paddingVertical": 15,
           "transform": Array [
             Object {
               "scale": 1,
@@ -132,10 +136,12 @@ Object {
       <Text
         style={
           Array [
+            false,
             Object {
-              "color": "white",
+              "color": "#FFF",
               "fontWeight": "bold",
             },
+            false,
           ]
         }
       >

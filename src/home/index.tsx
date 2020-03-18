@@ -1,18 +1,35 @@
 import React from 'react';
 import {View, SafeAreaView} from 'react-native';
-import {Button} from '../components/Elements/';
+
+import {StartedScreen} from '../components/Elements';
+import {images, colors} from '../theme/';
+import styles from './styles';
 
 const Home: Function = () => {
-  return {};
+  const data: any[] = [
+    {
+      title: 'Mengatur performa dengan mudah',
+      desc: 'Lihat performa anda anjay mabar banget',
+      image: images.Onboarding.image3,
+      color: colors.primary2,
+    },
+    {
+      title: 'Anjay',
+      desc: 'Lihat performa anda anjay mabar banget',
+      image: images.Onboarding.image2,
+      color: colors.like,
+    },
+  ];
+  return {data};
 };
 
 export default () => {
-  const {} = Home();
+  const {data} = Home();
 
   return (
-    <SafeAreaView>
-      <View>
-        <Button type="primary" title="asdas" />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.SafeAreaView}>
+        <StartedScreen data={data} />
       </View>
     </SafeAreaView>
   );

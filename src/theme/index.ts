@@ -27,4 +27,12 @@ const sizes = {
   radiusMedium: 6,
 };
 
-export {colors, sizes};
+const images = {
+  Onboarding: {
+    image1: require('../../assets/images/handle/onboarding1.png'),
+    image2: require('../../assets/images/handle/onboarding2.png'),
+    image3: require('../../assets/images/handle/onboarding3.png'),
+  },
+};
+
+export {colors, sizes, images};
