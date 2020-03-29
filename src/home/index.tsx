@@ -1,35 +1,23 @@
 import React from 'react';
-import {View, SafeAreaView} from 'react-native';
+import {View, SafeAreaView, StatusBar} from 'react-native';
 
 import {StartedScreen} from '../components/Elements';
-import {images, colors} from '../theme/';
+import {colors} from '../theme/';
 import styles from './styles';
+import {startedScreen} from '../utils';
 
 const Home: Function = () => {
-  const data: any[] = [
-    {
-      title: 'Mengatur performa dengan mudah',
-      desc: 'Lihat performa anda anjay mabar banget',
-      image: images.Onboarding.image3,
-      color: colors.primary2,
-    },
-    {
-      title: 'Anjay',
-      desc: 'Lihat performa anda anjay mabar banget',
-      image: images.Onboarding.image2,
-      color: colors.like,
-    },
-  ];
-  return {data};
+  return {};
 };
 
 export default () => {
-  const {data} = Home();
+  const {} = Home();
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
       <View style={styles.SafeAreaView}>
-        <StartedScreen data={data} />
+        <StartedScreen data={startedScreen} />
       </View>
     </SafeAreaView>
   );

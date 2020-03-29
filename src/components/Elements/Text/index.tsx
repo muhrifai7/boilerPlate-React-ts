@@ -12,28 +12,24 @@ type PropsText = {
   type: 'thin' | 'regular' | 'semibold' | 'bold';
 };
 
-const Typography: React.FC<PropsText> = ({
-  type,
-  style,
-  children,
-  color,
-  size,
-}) => {
+const Typography: React.FC<PropsText> = props => {
   const TextStyles: any[] = [
-    type === 'thin' && styles.thin,
-    type === 'regular' && styles.regular,
-    type === 'semibold' && styles.semibold,
-    type === 'bold' && styles.bold,
+    props.type === 'thin' && styles.thin,
+    props.type === 'regular' && styles.regular,
+    props.type === 'semibold' && styles.semibold,
+    props.type === 'bold' && styles.bold,
   ];
   const colors: object = {
-    color,
+    color: props.color ? props.color : '#072c5a',
   };
   const sizeText: object = {
-    fontSize: size && fs(size),
+    fontSize: props.size && fs(props.size),
   };
   return (
-    <Text style={[styles.default, TextStyles, colors, sizeText, style]}>
-      {children}
+    <Text
+      {...props}
+      style={[styles.default, TextStyles, colors, sizeText, props.style]}>
+      {props.children}
     </Text>
   );
 };

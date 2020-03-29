@@ -4,13 +4,20 @@ import {Text, Animated, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 type PropsButton = {
-  title: String;
-  type: 'primary' | 'dark' | 'light';
+  title?: String;
+  type?: 'primary' | 'dark' | 'light';
   onPress?: () => void;
   style?: Object;
+  children?: any;
 };
 
-const Button: React.FC<PropsButton> = ({type, style, title, onPress}) => {
+const Button: React.FC<PropsButton> = ({
+  type,
+  style,
+  title,
+  onPress,
+  children,
+}) => {
   const [state] = React.useState({
     animated: new Animated.Value(1),
   });
@@ -54,7 +61,7 @@ const Button: React.FC<PropsButton> = ({type, style, title, onPress}) => {
       onPressOut={outAnimate}
       onPress={onPress}>
       <Animated.View style={[animatedStyle, types, style]}>
-        <Text style={textStyles}>{title}</Text>
+        {children ? children : <Text style={textStyles}>{title}</Text>}
       </Animated.View>
     </TouchableOpacity>
   );

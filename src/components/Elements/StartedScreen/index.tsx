@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-  View,
-  Dimensions,
-  StatusBar,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import {PageControlAleppo} from 'react-native-chi-page-control';
-import Carousel from 'react-native-snap-carousel';
+import {View, Dimensions, StatusBar, Image} from 'react-native';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import {Text} from '../index';
-import {colors} from '../../../theme';
 import styles from './styles';
 
 type PropsStartedScreens = {
@@ -26,20 +17,10 @@ type stateData = {
 const Component: any = () => {
   const _renderItem: React.FC<stateData> = ({item}) => {
     return (
-      <View style={{...styles.containerData, backgroundColor: item.color}}>
+      <View style={styles.containerData}>
         <View style={styles.textData}>
-          <Text type="bold" size={25} color="white" style={styles.textData}>
-            {item.title}
-          </Text>
-          <Text
-            type="regular"
-            size={22}
-            color="white"
-            style={styles.textSubData}>
-            {item.desc}
-          </Text>
+          <Image source={item.image} style={styles.image} />
         </View>
-        <Image source={item.image} style={styles.image} />
       </View>
     );
   };
@@ -53,16 +34,16 @@ const StartedScreen: React.FC<PropsStartedScreens> = ({data}) => {
     refsCrousel: null,
     activeDotIndex: 0,
     colorButton: null,
+    index: 0,
+    data: data[0].title,
   });
 
-  let refsCrousel: any,
-    {width} = Dimensions.get('window');
+  let {width} = Dimensions.get('window');
 
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
       <Carousel
-        ref={(r: any) => (refsCrousel = r)}
         data={data}
         renderItem={_renderItem}
         sliderWidth={width}
@@ -70,29 +51,29 @@ const StartedScreen: React.FC<PropsStartedScreens> = ({data}) => {
         lockScrollWhileSnapping={false}
         inactiveSlideScale={1}
         inactiveSlideOpacity={1}
-        onScroll={e =>
+        onSnapToItem={index =>
           setState({
             ...state,
-            activeDotIndex:
-              e.nativeEvent.contentOffset.x / ((data.length - 1) * width),
+            index: index,
+            data: data[index ? index : 0].title,
           })
         }
       />
       <View style={styles.bottom}>
-        <PageControlAleppo
-          progress={state.activeDotIndex}
-          numberOfPages={data.length}
-          color="white"
-          inactiveTintColor="white"
-          activeTintColor="white"
+        <Text type="bold" size={16} style={styles.textData}>
+          HKI Mobile Application System
+        </Text>
+        <Text type="regular" size={16} style={styles.textData}>
+          {state.data}
+        </Text>
+        <Pagination
+          dotsLength={data.length}
+          activeDotIndex={state.index}
+          dotStyle={styles.dot}
+          containerStyle={styles.containerStyle}
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={0.6}
         />
-
-        <TouchableOpacity
-          onPress={() => refsCrousel.snapToNext()}
-          activeOpacity={0.9}
-          style={styles.buttonNext}>
-          <Icon name="arrow-right" size={24} color={colors.like} />
-        </TouchableOpacity>
       </View>
     </View>
   );

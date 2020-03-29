@@ -6,7 +6,7 @@ const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   default: {
     fontSize: fs(9, width),
-    color: '#072c5a',
+    textAlign: 'left',
   },
   thin: {
     fontSize: fs(9, width),

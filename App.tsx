@@ -1,9 +1,8 @@
 import React from 'react';
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
-import Home from './src/home/';
+import Home from './src/login/';
 
-import {View} from 'react-native';
 import Notification from './src/service/Notification';
 
 const App: React.FC = () => {
