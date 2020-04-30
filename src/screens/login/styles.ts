@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {colors} from '../theme/';
+import {colors} from '../../theme';
 
 const {height} = Dimensions.get('window');
 
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   backButton: {
     height: 40,
     width: 40,
+    marginTop: 20,
   },
   containerForm: {
     marginTop: height / 30,

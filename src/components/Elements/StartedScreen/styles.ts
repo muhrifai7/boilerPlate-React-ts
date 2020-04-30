@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   containerData: {
     flex: 1,
     paddingVertical: 140,
-    backgroundColor: colors.gray1,
+    backgroundColor: colors.primary2,
   },
   image: {
     height: width / 1.3,

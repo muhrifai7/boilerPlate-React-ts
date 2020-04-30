@@ -13,4 +13,9 @@ const startedScreen = [
   },
 ];
 
-export {startedScreen};
+const LOCALES = {
+  ENGLISH: {id: 1, name: 'en', label: 'ENGLISH'},
+  INDONESIA: {id: 2, name: 'id', label: 'INDONESIA'},
+};
+
+export {startedScreen, LOCALES};

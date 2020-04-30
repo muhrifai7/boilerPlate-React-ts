@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, SafeAreaView, StatusBar} from 'react-native';
 
-import {StartedScreen} from '../components/Elements';
-import {colors} from '../theme/';
+import {StartedScreen} from '../../components/Elements';
+import {colors} from '../../theme';
 import styles from './styles';
-import {startedScreen} from '../utils';
+import {startedScreen} from '../../utils';
 
 const Home: Function = () => {
   return {};

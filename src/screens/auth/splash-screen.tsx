@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, SafeAreaView, StatusBar, Image} from 'react-native';
 
-import {Text} from '../components/Elements';
+import {Text} from '../../components/Elements';
 import styles from './styles';
-import {images} from '../theme';
+import {images} from '../../theme/';
 
 const Home: Function = () => {
   return {};

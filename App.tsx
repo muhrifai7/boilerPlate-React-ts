@@ -1,7 +1,11 @@
 import React from 'react';
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
-import Home from './src/login/';
+import {Provider} from 'react-redux';
+import 'react-native-gesture-handler';
+
+import {store} from './src/store/store';
+import Stack from './src/routes/';
 
 import Notification from './src/service/Notification';
 
@@ -49,10 +53,10 @@ const App: React.FC = () => {
     checkPermission();
   });
   return (
-    <>
-      <Home />
+    <Provider store={store}>
+      <Stack />
       <Notification />
-    </>
+    </Provider>
   );
 };
 

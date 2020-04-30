@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../theme/';
+import {colors} from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   textSubData: {
-    marginTop: -10
+    marginTop: -10,
   },
   dataMenu: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -5
+    marginTop: -5,
   },
   textProfile: {
     marginLeft: 10,

@@ -7,9 +7,8 @@ import {Button} from '..';
 type PropsText = {
   placeholder?: string;
   style?: Object;
-  containerStyle: Object;
+  containerStyle?: Object;
   handle: Function;
-  usage?: string;
   isPassword?: boolean;
 };
 
@@ -18,7 +17,6 @@ const CustomTextInput: React.FC<PropsText> = ({
   containerStyle,
   placeholder,
   handle,
-  usage,
   isPassword,
 }) => {
   const [state, setState] = React.useState({
@@ -36,25 +34,28 @@ const CustomTextInput: React.FC<PropsText> = ({
   };
 
   React.useEffect(() => {
-    state.value !== '' ? onFocus() : onBlur();
-  });
+    state.value !== '' ? animateText(15) : animateText(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.value]);
 
-  const onFocus = (): void => {
+  const animateText = (toValue: number): void => {
     Animated.timing(state.animated, {
-      toValue: 15,
+      toValue,
       duration: 200,
     }).start();
-  };
-
-  const onBlur = (): void => {
-    Animated.timing(state.animated, {toValue: 0, duration: 200}).start();
   };
 
   const hidePassword = (): void => {
     setState({...state, hide: !state.hide});
   };
 
-  const animate = {fontSize: state.animated, fontFamily: 'Poppins-SemiBold'},
+  const animate = {
+      fontSize: state.animated.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+      }),
+      fontFamily: 'Poppins-SemiBold',
+    },
     styleTextInput = {
       width: isPassword ? '90%' : '100%',
       borderRadius: 15,
@@ -71,13 +72,13 @@ const CustomTextInput: React.FC<PropsText> = ({
 
   return (
     <View style={container}>
-      <Animated.Text style={animate}>{`${usage}`}</Animated.Text>
+      <Animated.Text style={animate}>{`${placeholder}`}</Animated.Text>
       {/* eslint-disable-next-line react-native/no-inline-styles */}
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TextInput
           placeholder={`${placeholder}`}
           value={state.value}
-          onChangeText={value => handleType(value)}
+          onChangeText={(value: any) => handleType(value)}
           style={[styleTextInput, style]}
           secureTextEntry={isPassword ? state.hide : false}
         />

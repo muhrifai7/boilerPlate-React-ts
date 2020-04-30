@@ -42,7 +42,11 @@ const StartedScreen: React.FC<PropsStartedScreens> = ({data}) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
       <Carousel
         data={data}
         renderItem={_renderItem}
